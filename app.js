@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { exec } from 'child_process';
 import express from 'express';
 import path from 'path';
 const app = express();
@@ -15,20 +16,27 @@ const PORT = process.env.PORT || 8085;
 try {
   app.listen(PORT, () => {
     setInterval(async () => {
-      console.clear();
+      exec('clear', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return;
+        }
+        // for.
+        let saida = stdout;
+        console.log(saida);
+      });
+      const response = await fetch('https://hq-marcao-henrique.glitch.me/');
+      const body = await response.status;
       console.log(
         `
         ${path.resolve()} \n Servidor rodando !!!
         para entrar, \n http://localhost:8085/ !!!
         `
-      );
-      const response = await fetch('https://hq-marcao-henrique.glitch.me/');
-      const body = await response.headers;
-      console.log('Status --->  ', body);
-    }, 4000);
+        , 'Status --->  ', body);
+    }, 100000);
 
     // "https://hq-marcao-henrique.glitch.me/"
-    //   180000
+    //   100000
   });
 } catch (error) {
   console.log("Servidor não rodou !!! , pois : ", error);
