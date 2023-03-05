@@ -22,5 +22,13 @@
     "node": "14.x"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasmarcao/api_get_hq_marcao_henrique.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucasmarcao/api_get_hq_marcao_henrique/issues"
+  },
+  "homepage": "https://github.com/lucasmarcao/api_get_hq_marcao_henrique#readme"
 }
